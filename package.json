@@ -1,0 +1,11 @@
+{
+  "name": "node-express",
+  "version": "1.0.0",
+  "description": "Node express ",
+  "main": "index.js",
+  "author": "Cesar Pena",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
