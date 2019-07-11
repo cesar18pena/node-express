@@ -5,7 +5,13 @@
   "main": "index.js",
   "author": "Cesar Pena",
   "license": "MIT",
+  "scripts": {
+    "start": "node index"
+  },
   "dependencies": {
     "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "morgan": "^1.9.1"
   }
 }
