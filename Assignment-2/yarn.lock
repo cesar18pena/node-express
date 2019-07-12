@@ -475,6 +475,11 @@ mongodb@3.2.7:
     mongodb-core "3.2.7"
     safe-buffer "^5.1.2"
 
+mongoose-currency@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/mongoose-currency/-/mongoose-currency-0.2.0.tgz#2f53272d5d720af35a171230fb30d6d22d74e451"
+  integrity sha1-L1MnLV1yCvNaFxIw+zDW0i105FE=
+
 mongoose-legacy-pluralize@1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/mongoose-legacy-pluralize/-/mongoose-legacy-pluralize-1.0.2.tgz#3ba9f91fa507b5186d399fb40854bff18fb563e4"
