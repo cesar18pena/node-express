@@ -1,0 +1,14 @@
+{
+  "name": "assignment-2",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Cesar Pena",
+  "license": "MIT",
+  "scripts": {
+    "start": "node index"
+  },
+  "dependencies": {
+    "bluebird": "^3.5.5",
+    "mongoose": "^5.6.4"
+  }
+}
