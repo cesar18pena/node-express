@@ -1,0 +1,22 @@
+{
+  "name": "assignment-2",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Cesar Pena",
+  "license": "MIT",
+  "scripts": {
+    "start": "node index",
+    "start:dev": "node ./bin/www"
+  },
+  "dependencies": {
+    "bluebird": "^3.5.5",
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "express": "~4.16.1",
+    "http-errors": "~1.6.3",
+    "jade": "~1.11.0",
+    "mongoose": "^5.6.4",
+    "mongoose-currency": "^0.2.0",
+    "morgan": "~1.9.1"
+  }
+}
