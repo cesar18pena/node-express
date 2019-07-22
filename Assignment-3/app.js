@@ -13,10 +13,11 @@ const dishRouter = require('./routes/dishRouter');
 const promotionRouter = require('./routes/promotionRouter');
 const leaderRouter = require('./routes/leaderRouter');
 
+const config = require('./config');
+
 const app = express();
 
-const url = 'mongodb://localhost:27017/conFusion';
-const connect = mongoose.connect(url);
+const connect = mongoose.connect(config.mongoUrl);
 
 connect.then((db) => {
     console.log("Connected correctly to server");
