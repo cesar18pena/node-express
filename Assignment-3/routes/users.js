@@ -7,8 +7,9 @@ const router = express.Router();
 router.use(express.json());
 
 /* GET users listing. */
-router.get('/', (req, res, next) => {
-  res.send('respond with a resource');
+router.get('/', auth.verifyUser, auth.verifyAdmin, async(req, res, next) => {
+  const users = await User.find({});
+  res.json(users);
 });
 
 router.post('/signup', (req, res, next) => {
