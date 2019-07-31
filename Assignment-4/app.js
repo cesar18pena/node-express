@@ -1,20 +1,20 @@
 const createError = require('http-errors');
-const express = require('express');
-const path = require('path');
 // const cookieParser = require('cookie-parser');
+const express = require('express');
+const fileStorage = require('session-file-store')(session);
 const logger = require('morgan');
 const mongoose = require('mongoose');
+const path = require('path');
 const session = require('express-session');
-const fileStorage = require('session-file-store')(session);
 
-const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/users');
 const dishRouter = require('./routes/dishRouter');
-const promotionRouter = require('./routes/promotionRouter');
+const indexRouter = require('./routes/index');
 const leaderRouter = require('./routes/leaderRouter');
+const promotionRouter = require('./routes/promotionRouter');
+const uploadRouter = require('./routes/uploadRouter');
+const usersRouter = require('./routes/users');
 
 const config = require('./config');
-
 const app = express();
 
 const connect = mongoose.connect(config.mongoUrl);
@@ -64,6 +64,7 @@ app.use('/users', usersRouter);
 app.use('/dishes', dishRouter);
 app.use('/promotions', promotionRouter);
 app.use('/leaders', leaderRouter);
+app.use('/imageUpload',uploadRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
