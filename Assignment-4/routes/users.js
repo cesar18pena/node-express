@@ -2,8 +2,6 @@ const express = require('express');
 const passport = require('passport');
 const auth = require('../authenticate');
 
-const cors = require('./cors');
-
 const router = express.Router();
 
 router.use(express.json());
@@ -12,6 +10,15 @@ router.use(express.json());
 router.get('/', auth.verifyUser, auth.verifyAdmin, async(req, res, next) => {
   const users = await User.find({});
   res.json(users);
+});
+
+router.get('/facebook/token', passport.authenticate('facebook-token'), (req, res) => {
+  if (req.user) {
+    const token = auth.getToken({_id: req.user._id});
+    res.statusCode = 200;
+    res.setHeader('Content-Type', 'application/json');
+    res.json({success: true, token: token, status: 'You are successfully logged in!'});
+  }
 });
 
 router.post('/signup', (req, res, next) => {
