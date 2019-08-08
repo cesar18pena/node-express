@@ -1,11 +1,13 @@
 const createError = require('http-errors');
 // const cookieParser = require('cookie-parser');
 const express = require('express');
-const fileStorage = require('session-file-store')(session);
+// const session = require('express-session');
+// const fileStorage = require('session-file-store')(session);
 const logger = require('morgan');
 const mongoose = require('mongoose');
 const path = require('path');
-const session = require('express-session');
+const cors = require('cors');
+const passport = require('passport');
 
 const dishRouter = require('./routes/dishRouter');
 const indexRouter = require('./routes/index');
@@ -16,6 +18,16 @@ const usersRouter = require('./routes/users');
 
 const config = require('./config');
 const app = express();
+
+// Secure traffic only
+app.all('*', (req, res, next) => {
+  if (req.secure) {
+    return next();
+  }
+  else {
+    res.redirect(307, 'https://' + req.hostname + ':' + app.get('secPort') + req.url);
+  }
+});
 
 const connect = mongoose.connect(config.mongoUrl);
 
@@ -31,13 +43,13 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 // app.use(cookieParser('12345-67890-09876-54321'));
-app.use(session, {
-  name: 'session-id',
-  secret: '12345-67890-09876-54321',
-  saveUninitialized: false,
-  resave: false,
-  store: new fileStorage()
-});
+// app.use(session, {
+//   name: 'session-id',
+//   secret: '12345-67890-09876-54321',
+//   saveUninitialized: false,
+//   resave: false,
+//   store: new fileStorage()
+// });
 
 app.use(express.static(path.join(__dirname, 'public')));
 

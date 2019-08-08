@@ -1,6 +1,8 @@
 const express = require('express');
 const passport = require('passport');
-const authenticate = require('../authenticate');
+const auth = require('../authenticate');
+
+const cors = require('./cors');
 
 const router = express.Router();
 
