@@ -14,6 +14,7 @@ const leaderRouter = require('./routes/leaderRouter');
 const promotionRouter = require('./routes/promotionRouter');
 const uploadRouter = require('./routes/uploadRouter');
 const usersRouter = require('./routes/users');
+const favoriteRouter = require('./routes/favoriteRouter');
 
 const config = require('./config');
 const app = express();
@@ -42,13 +43,13 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 // app.use(cookieParser('12345-67890-09876-54321'));
-app.use(session({
-  name: 'session-id',
-  secret: '12345-67890-09876-54321',
-  saveUninitialized: false,
-  resave: false,
-  store: new fileStorage()
-}));
+// app.use(session({
+//   name: 'session-id',
+//   secret: '12345-67890-09876-54321',
+//   saveUninitialized: false,
+//   resave: false,
+//   store: new fileStorage()
+// }));
 
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -75,6 +76,7 @@ app.use('/users', usersRouter);
 app.use('/dishes', dishRouter);
 app.use('/promotions', promotionRouter);
 app.use('/leaders', leaderRouter);
+app.use('/favorites',favoriteRouter);
 app.use('/imageUpload',uploadRouter);
 
 // catch 404 and forward to error handler
